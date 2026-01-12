@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Breathwork | Corporate Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender: #C4B5DC;
+            --lavender-light: #D4C8E8;
+            --lavender-dark: #A694C7;
+            --purple-deep: #6B5B8C;
+            --white: #FFFFFF;
+            --charcoal: #1A1A2E;
+            --charcoal-light: #2D2D44;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--charcoal); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+        /* Custom Cursor */
+        .cursor { width: 20px; height: 20px; border: 2px solid var(--lavender); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.15s ease; }
+        .cursor-dot { width: 4px; height: 4px; background: var(--lavender); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
+
+        /* Navigation */
+        nav { position: fixed; top: 0; left: 0; right: 0; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; mix-blend-mode: difference; }
+        .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--white); }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--white); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; position: relative; padding: 0.5rem 0; }
+        .nav-links a::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: var(--white); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-links a:hover::before { transform: scaleX(1); transform-origin: left; }
+
+        /* Hero */
+        .hero { min-height: 100vh; background: var(--lavender); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg-text { position: absolute; font-family: var(--font-display); font-size: clamp(12rem, 22vw, 28rem); font-weight: 700; color: rgba(255,255,255,0.08); text-transform: uppercase; letter-spacing: -0.05em; white-space: nowrap; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+        .hero-content { text-align: center; position: relative; z-index: 2; padding: 0 2rem; }
+        .hero-tag { display: inline-block; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--purple-deep); margin-bottom: 2rem; padding: 0.8rem 2rem; border: 1px solid var(--purple-deep); border-radius: 50px; animation: fadeIn 1s ease 0.2s both; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(3.5rem, 11vw, 9rem); font-weight: 400; line-height: 0.95; color: var(--charcoal); margin-bottom: 2rem; animation: heroReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both; }
+        @keyframes heroReveal { from { opacity: 0; transform: translateY(80px); clip-path: inset(100% 0 0 0); } to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); } }
+        .hero h1 em { font-style: italic; display: block; }
+        .hero-line { width: 100px; height: 2px; background: var(--charcoal); margin: 2.5rem auto; animation: expandLine 1s ease 0.8s both; }
+        @keyframes expandLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        .hero-description { font-size: 1.1rem; color: var(--charcoal-light); max-width: 500px; margin: 0 auto 3rem; animation: fadeIn 1s ease 1s both; }
+        .hero-cta { display: inline-flex; align-items: center; gap: 1rem; background: var(--charcoal); color: var(--white); padding: 1.2rem 2.5rem; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.4s ease; animation: fadeIn 1s ease 1.2s both; position: relative; overflow: hidden; }
+        .hero-cta::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--purple-deep); transform: translateX(-100%); transition: transform 0.4s ease; }
+        .hero-cta:hover::before { transform: translateX(0); }
+        .hero-cta span, .hero-cta svg { position: relative; z-index: 1; }
+        .hero-cta:hover svg { transform: translateX(5px); }
+        .hero-cta svg { transition: transform 0.4s ease; }
+
+        /* Floating Elements */
+        .float-element { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.3); animation: float 6s ease-in-out infinite; }
+        .float-1 { width: 300px; height: 300px; top: 10%; left: -5%; }
+        .float-2 { width: 200px; height: 200px; bottom: 10%; right: 5%; animation-delay: 2s; }
+        .float-3 { width: 150px; height: 150px; top: 20%; right: 15%; animation-delay: 4s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
+
+        /* Scroll Indicator */
+        .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: fadeIn 1s ease 1.5s both; }
+        .scroll-indicator span { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal-light); }
+        .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--charcoal), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%, 100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.5; } }
+
+        /* Clients Marquee */
+        .clients { padding: 4rem 0; background: var(--charcoal); overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .clients-track { display: flex; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .client-item { padding: 0 4rem; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.4); white-space: nowrap; transition: color 0.3s ease; }
+        .client-item:hover { color: var(--lavender); }
+
+        /* About Section */
+        .about { padding: 10rem 4rem; background: var(--charcoal); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .about-content h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 400; line-height: 1.1; margin-bottom: 2rem; }
+        .about-content h2 em { font-style: italic; color: var(--lavender); }
+        .about-content p { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-weight: 300; }
+        .about-quote { margin-top: 3rem; padding: 2rem; background: rgba(196, 181, 220, 0.1); border-left: 3px solid var(--lavender); }
+        .about-quote p { font-family: var(--font-display); font-size: 1.4rem; font-style: italic; color: var(--white); margin-bottom: 1rem; }
+        .about-quote cite { font-style: normal; font-size: 0.85rem; color: var(--lavender); letter-spacing: 0.1em; }
+        .about-visual { position: relative; }
+        .about-image { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, var(--lavender) 0%, var(--purple-deep) 100%); }
+        .about-stats { position: absolute; bottom: -2rem; left: -2rem; background: var(--charcoal); padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
+        .about-stats-number { font-family: var(--font-display); font-size: 3.5rem; color: var(--lavender); line-height: 1; }
+        .about-stats-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; }
+
+        /* Method Section */
+        .method { padding: 10rem 4rem; background: var(--lavender); position: relative; overflow: hidden; }
+        .method-bg-text { position: absolute; font-family: var(--font-display); font-size: 18rem; font-weight: 700; color: rgba(255,255,255,0.1); top: 50%; right: -5%; transform: translateY(-50%) rotate(-90deg); pointer-events: none; }
+        .method-header { max-width: 600px; margin-bottom: 5rem; position: relative; z-index: 1; }
+        .method-header h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 400; color: var(--charcoal); margin-bottom: 1.5rem; }
+        .method-header p { font-size: 1.05rem; color: var(--charcoal-light); }
+        .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .method-step { background: var(--white); padding: 2.5rem 2rem; transition: all 0.4s ease; }
+        .method-step:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+        .method-step-number { font-family: var(--font-display); font-size: 4rem; font-weight: 700; color: var(--lavender); line-height: 1; margin-bottom: 1rem; }
+        .method-step h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.8rem; }
+        .method-step p { font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; }
+
+        /* Benefits Section */
+        .benefits { padding: 10rem 4rem; background: var(--charcoal); }
+        .benefits-header { text-align: center; margin-bottom: 5rem; }
+        .benefits-header h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 400; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .benefit-card { padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--lavender) 0%, var(--purple-deep) 100%); opacity: 0; transition: opacity 0.4s ease; }
+        .benefit-card:hover { border-color: var(--lavender); transform: translateY(-5px); }
+        .benefit-card:hover::before { opacity: 0.1; }
+        .benefit-card > * { position: relative; z-index: 1; }
+        .benefit-number { font-family: var(--font-display); font-size: 1rem; color: var(--lavender); margin-bottom: 1.5rem; letter-spacing: 0.1em; }
+        .benefit-card h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; }
+        .benefit-card p { color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; margin-bottom: 2rem; }
+        .benefit-stat { padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .benefit-stat strong { font-family: var(--font-display); font-size: 2.5rem; color: var(--lavender); display: block; }
+        .benefit-stat span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+        /* Offerings Section */
+        .offerings { padding: 10rem 4rem; background: linear-gradient(180deg, var(--lavender-dark) 0%, var(--lavender) 100%); }
+        .offerings-header { text-align: center; margin-bottom: 5rem; }
+        .offerings-header h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 400; color: var(--charcoal); }
+        .offerings-header p { font-size: 1.05rem; color: var(--charcoal-light); max-width: 500px; margin: 1.5rem auto 0; }
+        .offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .offering-card { background: var(--white); overflow: hidden; transition: all 0.4s ease; }
+        .offering-card:hover { transform: translateY(-10px); box-shadow: 0 40px 80px rgba(0,0,0,0.2); }
+        .offering-card.featured { transform: scale(1.05); box-shadow: 0 40px 80px rgba(0,0,0,0.2); }
+        .offering-card.featured:hover { transform: scale(1.05) translateY(-10px); }
+        .offering-header { padding: 2.5rem 2rem 2rem; background: var(--charcoal); color: var(--white); position: relative; }
+        .offering-card.featured .offering-header { background: linear-gradient(135deg, var(--purple-deep) 0%, var(--charcoal) 100%); }
+        .offering-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--lavender); color: var(--charcoal); padding: 0.4rem 1rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .offering-name { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; margin-bottom: 0.3rem; }
+        .offering-duration { font-size: 0.85rem; opacity: 0.7; }
+        .offering-content { padding: 2rem; }
+        .offering-description { color: var(--charcoal-light); line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .offering-features { list-style: none; margin-bottom: 1.5rem; }
+        .offering-features li { padding: 0.5rem 0; font-size: 0.9rem; color: var(--charcoal-light); display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .offering-features li:last-child { border-bottom: none; }
+        .offering-features li::before { content: '→'; color: var(--purple-deep); font-weight: 600; }
+        .offering-cta { display: block; text-align: center; padding: 1.1rem 2rem; background: var(--charcoal); color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s ease; }
+        .offering-cta:hover { background: var(--purple-deep); }
+
+        /* Contact Section */
+        .contact { padding: 10rem 4rem; background: var(--charcoal); text-align: center; position: relative; overflow: hidden; }
+        .contact-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(196, 181, 220, 0.1) 0%, transparent 60%); pointer-events: none; }
+        .contact-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .contact h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 400; margin-bottom: 1.5rem; line-height: 1.1; }
+        .contact h2 em { font-style: italic; color: var(--lavender); }
+        .contact-content > p { font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem; }
+        .contact-methods { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
+        .contact-method { text-align: center; }
+        .contact-method-icon { width: 70px; height: 70px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: all 0.4s ease; }
+        .contact-method:hover .contact-method-icon { background: var(--lavender); border-color: var(--lavender); }
+        .contact-method-icon svg { width: 22px; height: 22px; stroke: var(--white); transition: stroke 0.4s ease; }
+        .contact-method:hover .contact-method-icon svg { stroke: var(--charcoal); }
+        .contact-method a { color: var(--white); text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; }
+        .contact-method a:hover { color: var(--lavender); }
+        .contact-method span { display: block; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .contact-cta { display: inline-flex; align-items: center; gap: 1rem; background: var(--lavender); color: var(--charcoal); padding: 1.4rem 3rem; text-decoration: none; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.4s ease; }
+        .contact-cta:hover { background: var(--white); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(196, 181, 220, 0.3); }
+        .contact-cta svg { transition: transform 0.4s ease; }
+        .contact-cta:hover svg { transform: translateX(5px); }
+
+        /* Footer */
+        footer { padding: 2.5rem 4rem; background: var(--charcoal-light); display: flex; justify-content: space-between; align-items: center; }
+        .footer-logo { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--lavender); }
+
+        /* Mobile */
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-menu-btn span { display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; }
+
+        /* Scroll Animations */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .about-visual { order: -1; }
+            .method-steps, .benefits-grid, .offerings-grid { grid-template-columns: 1fr; max-width: 500px; }
+            .offering-card.featured { transform: none; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero, .about, .method, .benefits, .offerings, .contact { padding: 5rem 1.5rem; }
+            .contact-methods { flex-direction: column; gap: 2rem; }
+            footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .hero-bg-text { font-size: 6rem; }
+            .cursor, .cursor-dot { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <nav>
+        <div class="logo">Impact Breathwork</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#method">Method</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#offerings">Programs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg-text">Breathe</div>
+        <div class="float-element float-1"></div>
+        <div class="float-element float-2"></div>
+        <div class="float-element float-3"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Corporate Wellness Reimagined</div>
+            <h1>Unlock<em>Peak Performance</em></h1>
+            <div class="hero-line"></div>
+            <p class="hero-description">Transform your team's potential with guided breathwork sessions designed to eliminate stress and amplify clarity.</p>
+            <a href="#contact" class="hero-cta">
+                <span>Book Your Session</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="clients">
+        <div class="clients-track">
+            <span class="client-item">YPO</span><span class="client-item">•</span>
+            <span class="client-item">REMEDY PLACE</span><span class="client-item">•</span>
+            <span class="client-item">TANDYM</span><span class="client-item">•</span>
+            <span class="client-item">NURDLE</span><span class="client-item">•</span>
+            <span class="client-item">RADIUS</span><span class="client-item">•</span>
+            <span class="client-item">YPO</span><span class="client-item">•</span>
+            <span class="client-item">REMEDY PLACE</span><span class="client-item">•</span>
+            <span class="client-item">TANDYM</span><span class="client-item">•</span>
+            <span class="client-item">NURDLE</span><span class="client-item">•</span>
+            <span class="client-item">RADIUS</span><span class="client-item">•</span>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-content reveal">
+                <h2>Rewire Your Mind Through <em>Conscious Breathing</em></h2>
+                <p>Impact Breathwork combines ancient wisdom with modern neuroscience to create transformative experiences for corporate teams. Our method stimulates different regions of the brain, unlocking heightened clarity, creativity, and emotional intelligence.</p>
+                <p>By altering the balance of oxygen and carbon dioxide in your system, we activate dormant neural pathways and create lasting changes in how you think, feel, and perform.</p>
+                <div class="about-quote">
+                    <p>"One session of breathwork is equivalent to two years of psychotherapy."</p>
+                    <cite>— Dr. Henry Smith Rohrberg</cite>
+                </div>
+            </div>
+            <div class="about-visual reveal">
+                <div class="about-image"></div>
+                <div class="about-stats">
+                    <div class="about-stats-number">500+</div>
+                    <div class="about-stats-label">Sessions Facilitated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="method" id="method">
+        <div class="method-bg-text">Method</div>
+        <div class="method-header reveal">
+            <h2>The Method</h2>
+            <p>A simple yet profound practice that takes just 10-25 minutes to transform your state of being.</p>
+        </div>
+        <div class="method-steps">
+            <div class="method-step reveal"><div class="method-step-number">01</div><h3>Ground</h3><p>Lie down on your back or sit upright in a comfortable position</p></div>
+            <div class="method-step reveal"><div class="method-step-number">02</div><h3>Tune In</h3><p>Listen to our custom guided playlist with vocal music</p></div>
+            <div class="method-step reveal"><div class="method-step-number">03</div><h3>Breathe</h3><p>Inhale into belly, inhale into chest, exhale through mouth</p></div>
+            <div class="method-step reveal"><div class="method-step-number">04</div><h3>Transform</h3><p>10-25 minutes of conscious connected breathing</p></div>
+        </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <div class="benefits-header reveal"><h2>The Benefits</h2></div>
+        <div class="benefits-grid">
+            <div class="benefit-card reveal">
+                <div class="benefit-number">01</div>
+                <h3>Eliminate Stress</h3>
+                <p>Access your nervous system directly to release accumulated tension and reverse chronic stress responses.</p>
+                <div class="benefit-stat"><strong>68%</strong><span>Reduction in cortisol levels</span></div>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-number">02</div>
+                <h3>Uplevel Performance</h3>
+                <p>Optimize oxygen-CO2 balance to activate different brain regions and fire new neural pathways.</p>
+                <div class="benefit-stat"><strong>40%</strong><span>Improvement in focus</span></div>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-number">03</div>
+                <h3>Deepen Collaboration</h3>
+                <p>Foster genuine connection and teamwork through shared transformative experiences.</p>
+                <div class="benefit-stat"><strong>36%</strong><span>More effective collaboration</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offerings" id="offerings">
+        <div class="offerings-header reveal">
+            <h2>Our Programs</h2>
+            <p>Flexible offerings designed to meet your organization wherever you are.</p>
+        </div>
+        <div class="offerings-grid">
+            <div class="offering-card reveal">
+                <div class="offering-header"><div class="offering-name">Flow</div><div class="offering-duration">Single Session • 45 Min</div></div>
+                <div class="offering-content">
+                    <p class="offering-description">A powerful introduction to breathwork—perfect for team retreats and wellness days.</p>
+                    <ul class="offering-features"><li>Online or in-person</li><li>Immediate stress relief</li><li>Post-session integration</li><li>Up to 100 participants</li></ul>
+                    <a href="#contact" class="offering-cta">Learn More</a>
+                </div>
+            </div>
+            <div class="offering-card featured reveal">
+                <div class="offering-header"><span class="offering-badge">Most Popular</span><div class="offering-name">Reset</div><div class="offering-duration">4-Week Program</div></div>
+                <div class="offering-content">
+                    <p class="offering-description">Build lasting habits with a structured program that deepens your team's practice.</p>
+                    <ul class="offering-features"><li>Weekly guided sessions</li><li>Progress tracking</li><li>Team accountability</li><li>Custom pricing by size</li></ul>
+                    <a href="#contact" class="offering-cta">Learn More</a>
+                </div>
+            </div>
+            <div class="offering-card reveal">
+                <div class="offering-header"><div class="offering-name">Optimize</div><div class="offering-duration">3-Month Transformation</div></div>
+                <div class="offering-content">
+                    <p class="offering-description">Weekly breathwork plus monthly executive coaching for lasting transformation.</p>
+                    <ul class="offering-features"><li>Weekly sessions</li><li>Executive coaching 1x/month</li><li>Leadership integration</li><li>Full team support</li></ul>
+                    <a href="#contact" class="offering-cta">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-bg"></div>
+        <div class="contact-content">
+            <h2>Ready to <em>Transform?</em></h2>
+            <p>Schedule a discovery call to unlock your organization's full potential.</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                    <a href="mailto:kathy@impactbreathwork.com">kathy@impactbreathwork.com</a>
+                    <span>Email</span>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                    <a href="tel:6465824205">646-582-4205</a>
+                    <span>Phone</span>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                    <a href="https://www.impactbreathwork.com" target="_blank">impactbreathwork.com</a>
+                    <span>Website</span>
+                </div>
+            </div>
+            <a href="mailto:kathy@impactbreathwork.com?subject=Corporate%20Breathwork%20Inquiry" class="contact-cta">
+                Book Discovery Call
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Impact Breathwork</div>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#method">Method</a>
+            <a href="#offerings">Programs</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.5)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Parallax
+        window.addEventListener('scroll', () => {
+            const heroText = document.querySelector('.hero-bg-text');
+            if (heroText) heroText.style.transform = `translate(-50%, -50%) translateY(${window.pageYOffset * 0.3}px)`;
+        });
+    </script>
+</body>
+</html>
