@@ -57,14 +57,12 @@
         .nav-links a::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: var(--white); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .nav-links a:hover::before { transform: scaleX(1); transform-origin: left; }
 
-        /* Mobile Menu Button */
+        /* Mobile Menu */
         .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
         .mobile-menu-btn span { display: block; width: 28px; height: 2px; background: var(--white); margin: 7px 0; transition: all 0.3s ease; }
         .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 7px); }
         .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
         .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -7px); }
-
-        /* Mobile Menu Overlay */
         .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--charcoal); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
         .mobile-menu.active { opacity: 1; visibility: visible; }
         .mobile-menu a { font-family: var(--font-display); font-size: 2rem; color: var(--white); text-decoration: none; padding: 0.8rem; transition: color 0.3s ease; }
@@ -102,134 +100,132 @@
         .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--charcoal), transparent); animation: scrollPulse 2s ease-in-out infinite; }
         @keyframes scrollPulse { 0%, 100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.5; } }
 
-        /* Clients Marquee */
+        /* Clients */
         .clients { padding: 3rem 0; background: var(--charcoal); overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .clients-track { display: flex; animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .client-item { padding: 0 2.5rem; font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.4); white-space: nowrap; transition: color 0.3s ease; }
-        .client-item:hover { color: var(--lavender); }
+        .client-item { padding: 0 2.5rem; font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.4); white-space: nowrap; }
 
-        /* About Section */
+        /* About */
         .about { padding: 8rem 4rem; background: var(--charcoal); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1300px; margin: 0 auto; align-items: center; }
-        .about-content h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.8rem; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .about-content h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.1; margin-bottom: 2rem; }
         .about-content h2 em { font-style: italic; color: var(--lavender); }
-        .about-content p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 1.3rem; font-weight: 300; line-height: 1.7; }
-        .about-quote { margin-top: 2.5rem; padding: 1.8rem; background: rgba(196, 181, 220, 0.1); border-left: 3px solid var(--lavender); }
-        .about-quote p { font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--white); margin-bottom: 0.8rem; line-height: 1.5; }
-        .about-quote cite { font-style: normal; font-size: 0.8rem; color: var(--lavender); letter-spacing: 0.1em; }
+        .about-content p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-weight: 300; }
+        .about-quote { margin-top: 2.5rem; padding: 1.5rem; background: rgba(196, 181, 220, 0.1); border-left: 3px solid var(--lavender); }
+        .about-quote p { font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--white); margin-bottom: 0.8rem; }
+        .about-quote cite { font-style: normal; font-size: 0.85rem; color: var(--lavender); }
         .about-visual { position: relative; }
         .about-image { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, var(--lavender) 0%, var(--purple-deep) 100%); }
-        .about-stats { position: absolute; bottom: -2rem; left: -2rem; background: var(--charcoal); padding: 1.8rem; border: 1px solid rgba(255,255,255,0.1); }
+        .about-stats { position: absolute; bottom: -2rem; left: -2rem; background: var(--charcoal); padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
         .about-stats-number { font-family: var(--font-display); font-size: 3rem; color: var(--lavender); line-height: 1; }
-        .about-stats-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; }
+        .about-stats-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; }
 
-        /* Method Section */
+        /* Method */
         .method { padding: 8rem 4rem; background: var(--lavender); position: relative; overflow: hidden; }
-        .method-bg-text { position: absolute; font-family: var(--font-display); font-size: clamp(6rem, 15vw, 16rem); font-weight: 700; color: rgba(255,255,255,0.1); top: 50%; right: -5%; transform: translateY(-50%) rotate(-90deg); pointer-events: none; }
-        .method-header { max-width: 550px; margin-bottom: 4rem; position: relative; z-index: 1; }
-        .method-header h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; color: var(--charcoal); margin-bottom: 1.2rem; }
-        .method-header p { font-size: 1rem; color: var(--charcoal-light); line-height: 1.6; }
-        .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
-        .method-step { background: var(--white); padding: 2.2rem 1.8rem; transition: all 0.4s ease; }
+        .method-bg-text { position: absolute; font-family: var(--font-display); font-size: 15rem; font-weight: 700; color: rgba(255,255,255,0.1); top: 50%; right: -5%; transform: translateY(-50%) rotate(-90deg); pointer-events: none; }
+        .method-header { max-width: 600px; margin-bottom: 4rem; position: relative; z-index: 1; }
+        .method-header h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; color: var(--charcoal); margin-bottom: 1rem; }
+        .method-header p { font-size: 1rem; color: var(--charcoal-light); }
+        .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .method-step { background: var(--white); padding: 2rem 1.5rem; transition: all 0.4s ease; }
         .method-step:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
         .method-step-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--lavender); line-height: 1; margin-bottom: 1rem; }
-        .method-step h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.7rem; }
+        .method-step h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.8rem; }
         .method-step p { font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; }
 
-        /* Benefits Section */
+        /* Benefits */
         .benefits { padding: 8rem 4rem; background: var(--charcoal); }
         .benefits-header { text-align: center; margin-bottom: 4rem; }
         .benefits-header h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; max-width: 1300px; margin: 0 auto; }
-        .benefit-card { padding: 2.2rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .benefit-card { padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; position: relative; overflow: hidden; }
         .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--lavender) 0%, var(--purple-deep) 100%); opacity: 0; transition: opacity 0.4s ease; }
         .benefit-card:hover { border-color: var(--lavender); transform: translateY(-5px); }
         .benefit-card:hover::before { opacity: 0.1; }
         .benefit-card > * { position: relative; z-index: 1; }
-        .benefit-number { font-family: var(--font-display); font-size: 0.9rem; color: var(--lavender); margin-bottom: 1.3rem; letter-spacing: 0.1em; }
-        .benefit-card h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.9rem; }
-        .benefit-card p { color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; margin-bottom: 1.8rem; font-size: 0.95rem; }
+        .benefit-number { font-family: var(--font-display); font-size: 1rem; color: var(--lavender); margin-bottom: 1.5rem; letter-spacing: 0.1em; }
+        .benefit-card h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
+        .benefit-card p { color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem; }
         .benefit-stat { padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
         .benefit-stat strong { font-family: var(--font-display); font-size: 2.2rem; color: var(--lavender); display: block; }
-        .benefit-stat span { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+        .benefit-stat span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 
-        /* Offerings Section */
+        /* Offerings */
         .offerings { padding: 8rem 4rem; background: linear-gradient(180deg, var(--lavender-dark) 0%, var(--lavender) 100%); }
         .offerings-header { text-align: center; margin-bottom: 4rem; }
         .offerings-header h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 400; color: var(--charcoal); }
-        .offerings-header p { font-size: 1rem; color: var(--charcoal-light); max-width: 450px; margin: 1.2rem auto 0; }
-        .offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; max-width: 1100px; margin: 0 auto; }
+        .offerings-header p { font-size: 1rem; color: var(--charcoal-light); max-width: 500px; margin: 1rem auto 0; }
+        .offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
         .offering-card { background: var(--white); overflow: hidden; transition: all 0.4s ease; }
         .offering-card:hover { transform: translateY(-10px); box-shadow: 0 40px 80px rgba(0,0,0,0.2); }
-        .offering-card.featured { transform: scale(1.03); box-shadow: 0 40px 80px rgba(0,0,0,0.2); }
-        .offering-card.featured:hover { transform: scale(1.03) translateY(-10px); }
-        .offering-header { padding: 2.2rem 1.8rem 1.8rem; background: var(--charcoal); color: var(--white); position: relative; }
+        .offering-card.featured { transform: scale(1.05); box-shadow: 0 40px 80px rgba(0,0,0,0.2); }
+        .offering-card.featured:hover { transform: scale(1.05) translateY(-10px); }
+        .offering-header { padding: 2rem 1.5rem 1.5rem; background: var(--charcoal); color: var(--white); position: relative; }
         .offering-card.featured .offering-header { background: linear-gradient(135deg, var(--purple-deep) 0%, var(--charcoal) 100%); }
-        .offering-badge { position: absolute; top: 1rem; right: 1rem; background: var(--lavender); color: var(--charcoal); padding: 0.35rem 0.8rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .offering-badge { position: absolute; top: 1rem; right: 1rem; background: var(--lavender); color: var(--charcoal); padding: 0.4rem 0.8rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
         .offering-name { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 0.3rem; }
-        .offering-duration { font-size: 0.8rem; opacity: 0.7; }
-        .offering-content { padding: 1.8rem; }
-        .offering-description { color: var(--charcoal-light); line-height: 1.6; margin-bottom: 1.3rem; font-size: 0.9rem; }
-        .offering-features { list-style: none; margin-bottom: 1.3rem; }
-        .offering-features li { padding: 0.45rem 0; font-size: 0.85rem; color: var(--charcoal-light); display: flex; align-items: center; gap: 0.7rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .offering-duration { font-size: 0.85rem; opacity: 0.7; }
+        .offering-content { padding: 1.5rem; }
+        .offering-description { color: var(--charcoal-light); line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .offering-features { list-style: none; margin-bottom: 1.5rem; }
+        .offering-features li { padding: 0.5rem 0; font-size: 0.85rem; color: var(--charcoal-light); display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .offering-features li:last-child { border-bottom: none; }
         .offering-features li::before { content: '→'; color: var(--purple-deep); font-weight: 600; }
-        .offering-cta { display: block; text-align: center; padding: 1rem 1.8rem; background: var(--charcoal); color: var(--white); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s ease; }
+        .offering-cta { display: block; text-align: center; padding: 1rem 1.5rem; background: var(--charcoal); color: var(--white); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s ease; }
         .offering-cta:hover { background: var(--purple-deep); }
 
-        /* Contact Section */
+        /* Contact */
         .contact { padding: 8rem 4rem; background: var(--charcoal); text-align: center; position: relative; overflow: hidden; }
-        .contact-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(196, 181, 220, 0.1) 0%, transparent 60%); pointer-events: none; }
+        .contact-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(196, 181, 220, 0.1) 0%, transparent 60%); pointer-events: none; }
         .contact-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-        .contact h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 400; margin-bottom: 1.2rem; line-height: 1.1; }
+        .contact h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 400; margin-bottom: 1rem; line-height: 1.1; }
         .contact h2 em { font-style: italic; color: var(--lavender); }
-        .contact-content > p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; }
-        .contact-methods { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .contact-content > p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem; }
+        .contact-methods { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
         .contact-method { text-align: center; }
-        .contact-method-icon { width: 65px; height: 65px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: all 0.4s ease; }
+        .contact-method-icon { width: 60px; height: 60px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: all 0.4s ease; }
         .contact-method:hover .contact-method-icon { background: var(--lavender); border-color: var(--lavender); }
-        .contact-method-icon svg { width: 20px; height: 20px; stroke: var(--white); transition: stroke 0.4s ease; }
+        .contact-method-icon svg { width: 22px; height: 22px; stroke: var(--white); transition: stroke 0.4s ease; }
         .contact-method:hover .contact-method-icon svg { stroke: var(--charcoal); }
-        .contact-method a { color: var(--white); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+        .contact-method a { color: var(--white); text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; }
         .contact-method a:hover { color: var(--lavender); }
-        .contact-method span { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .contact-method span { display: block; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase; }
         .contact-cta { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--lavender); color: var(--charcoal); padding: 1.2rem 2.5rem; text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.4s ease; }
         .contact-cta:hover { background: var(--white); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(196, 181, 220, 0.3); }
         .contact-cta svg { transition: transform 0.4s ease; }
         .contact-cta:hover svg { transform: translateX(5px); }
 
         /* Footer */
-        footer { padding: 2rem 4rem; background: var(--charcoal-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-logo { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); }
-        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; transition: color 0.3s ease; }
+        footer { padding: 2rem 4rem; background: var(--charcoal-light); display: flex; justify-content: space-between; align-items: center; }
+        .footer-logo { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease; }
         .footer-links a:hover { color: var(--lavender); }
 
         /* Scroll Animations */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Responsive - Tablet */
         @media (max-width: 1024px) {
-            .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-            .about-visual { order: -1; max-width: 500px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .about-visual { order: -1; }
             .method-steps { grid-template-columns: repeat(2, 1fr); }
-            .benefits-grid { grid-template-columns: 1fr; max-width: 550px; margin: 0 auto; }
-            .offerings-grid { grid-template-columns: 1fr; max-width: 420px; }
+            .benefits-grid { grid-template-columns: 1fr; max-width: 600px; }
+            .offerings-grid { grid-template-columns: 1fr; max-width: 450px; }
             .offering-card.featured { transform: none; }
         }
 
         /* Responsive - Mobile */
         @media (max-width: 768px) {
             nav { padding: 1.2rem 1.5rem; }
-            .logo { font-size: 1.3rem; }
+            .logo { font-size: 1.2rem; }
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; min-height: 44px; min-width: 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
             .hero { padding: 5rem 1.5rem; }
-            .hero-content { padding: 0 0.5rem; }
-            .hero-tag { font-size: 0.6rem; padding: 0.6rem 1.2rem; letter-spacing: 0.2em; }
+            .hero-tag { font-size: 0.6rem; padding: 0.6rem 1.2rem; }
             .hero h1 { font-size: clamp(2.4rem, 11vw, 3.5rem); }
             .hero-line { width: 60px; margin: 1.5rem auto; }
             .hero-description { font-size: 0.95rem; margin-bottom: 2rem; }
@@ -243,89 +239,62 @@
 
             .about, .method, .benefits, .offerings, .contact { padding: 4rem 1.5rem; }
 
-            .about-content h2, .method-header h2, .benefits-header h2, .offerings-header h2 { font-size: clamp(1.9rem, 6vw, 2.4rem); }
+            .about-content h2, .method-header h2, .benefits-header h2, .offerings-header h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
             .about-content p { font-size: 0.95rem; }
-            .about-quote { padding: 1.3rem; }
+            .about-quote { padding: 1.2rem; }
             .about-quote p { font-size: 1.1rem; }
             .about-stats { position: relative; bottom: auto; left: auto; margin-top: 1.5rem; display: inline-block; }
             .about-stats-number { font-size: 2.5rem; }
 
             .method-header { margin-bottom: 3rem; }
             .method-steps { grid-template-columns: 1fr; gap: 1rem; }
-            .method-step { padding: 1.8rem 1.5rem; }
-            .method-step-number { font-size: 2.8rem; }
-            .method-step h3 { font-size: 1.2rem; }
-            .method-bg-text { font-size: 5rem; opacity: 0.08; }
+            .method-step { padding: 1.5rem; }
+            .method-step-number { font-size: 2.5rem; }
+            .method-step h3 { font-size: 1.1rem; }
+            .method-bg-text { display: none; }
 
             .benefits-header { margin-bottom: 3rem; }
             .benefits-grid { gap: 1.2rem; }
-            .benefit-card { padding: 1.8rem 1.5rem; }
+            .benefit-card { padding: 1.5rem; }
             .benefit-card h3 { font-size: 1.4rem; }
             .benefit-stat strong { font-size: 2rem; }
 
             .offerings-header { margin-bottom: 3rem; }
             .offerings-grid { gap: 1.2rem; }
-            .offering-header { padding: 1.8rem 1.5rem 1.5rem; }
-            .offering-name { font-size: 1.7rem; }
+            .offering-header { padding: 1.5rem; }
+            .offering-name { font-size: 1.6rem; }
             .offering-content { padding: 1.5rem; }
-            .offering-cta { min-height: 48px; display: flex; align-items: center; justify-content: center; }
+            .offering-cta { min-height: 48px; }
 
-            .contact h2 { font-size: clamp(1.9rem, 7vw, 2.8rem); }
+            .contact h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
             .contact-content > p { margin-bottom: 2rem; }
-            .contact-methods { flex-direction: column; gap: 1.8rem; margin-bottom: 2rem; }
-            .contact-method-icon { width: 55px; height: 55px; }
-            .contact-method a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
-            .contact-cta { width: 100%; justify-content: center; padding: 1.1rem 2rem; min-height: 52px; }
+            .contact-methods { flex-direction: column; gap: 1.5rem; margin-bottom: 2rem; }
+            .contact-method-icon { width: 50px; height: 50px; }
+            .contact-cta { width: 100%; justify-content: center; padding: 1rem 2rem; }
 
-            footer { flex-direction: column; text-align: center; padding: 1.8rem 1.5rem; gap: 1.2rem; }
-            .footer-links { justify-content: center; flex-wrap: wrap; }
-            .footer-links a { min-height: 44px; display: flex; align-items: center; }
+            footer { flex-direction: column; text-align: center; padding: 1.5rem; gap: 1rem; }
+            .footer-links { justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
 
             .cursor, .cursor-dot { display: none; }
         }
 
-        /* Responsive - Small Mobile */
+        /* Small Mobile */
         @media (max-width: 380px) {
-            nav { padding: 1rem; }
-            .logo { font-size: 1.1rem; }
-            .hero { padding: 4rem 1rem; }
             .hero h1 { font-size: 2rem; }
-            .hero-tag { font-size: 0.55rem; padding: 0.5rem 1rem; }
-            .hero-description { font-size: 0.9rem; }
-            .mobile-menu a { font-size: 1.5rem; padding: 1rem; }
-            .about, .method, .benefits, .offerings, .contact { padding: 3.5rem 1rem; }
+            .hero-tag { font-size: 0.55rem; }
+            .mobile-menu a { font-size: 1.5rem; }
             .about-content h2, .method-header h2, .benefits-header h2, .offerings-header h2, .contact h2 { font-size: 1.6rem; }
-            .method-step { padding: 1.5rem 1.2rem; }
-            .benefit-card { padding: 1.5rem 1.2rem; }
-            .offering-header { padding: 1.5rem 1.2rem 1.2rem; }
-            .offering-content { padding: 1.2rem; }
-            .contact-cta { font-size: 0.75rem; }
         }
 
         /* Safe area for notched phones */
         @supports (padding: max(0px)) {
-            body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
-            nav { padding-top: max(1.2rem, env(safe-area-inset-top)); padding-left: max(1.5rem, env(safe-area-inset-left)); padding-right: max(1.5rem, env(safe-area-inset-right)); }
-            .hero { padding-top: max(5rem, calc(env(safe-area-inset-top) + 4rem)); }
-            footer { padding-bottom: max(1.8rem, env(safe-area-inset-bottom)); }
+            nav { padding-top: max(1.2rem, env(safe-area-inset-top)); }
+            footer { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
         }
 
-        /* Reduce motion for accessibility */
+        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-            .clients-track { animation: none; }
-            .float-element { animation: none; }
-            .scroll-line { animation: none; }
-        }
-
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .hero-cta:hover::before { transform: translateX(-100%); }
-            .method-step:hover { transform: none; box-shadow: none; }
-            .benefit-card:hover { transform: none; }
-            .benefit-card:hover::before { opacity: 0; }
-            .offering-card:hover { transform: none; box-shadow: none; }
-            .contact-cta:hover { transform: none; box-shadow: none; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
@@ -489,7 +458,7 @@
             <div class="contact-methods">
                 <div class="contact-method">
                     <div class="contact-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                    <a href="/cdn-cgi/l/email-protection#8de6ecf9e5f4cde4e0fdeceef9efffe8ecf9e5fae2ffe6a3eee2e0"><span class="__cf_email__" data-cfemail="b9d2d8cdd1c0f9d0d4c9d8dacddbcbdcd8cdd1ced6cbd297dad6d4">[email&#160;protected]</span></a>
+                    <a href="mailto:kathy@impactbreathwork.com">kathy@impactbreathwork.com</a>
                     <span>Email</span>
                 </div>
                 <div class="contact-method">
@@ -503,7 +472,7 @@
                     <span>Website</span>
                 </div>
             </div>
-            <a href="/cdn-cgi/l/email-protection#036862776b7a436a6e7362607761716662776b746c71682d606c6e3c707661696660773e406c71736c7162776626313341716662776b746c71682631334a6d72766a717a" class="contact-cta">
+            <a href="mailto:kathy@impactbreathwork.com?subject=Corporate%20Breathwork%20Inquiry" class="contact-cta">
                 Book Discovery Call
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -520,7 +489,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Custom cursor (desktop only)
         const cursor = document.querySelector('.cursor');
         const cursorDot = document.querySelector('.cursor-dot');
@@ -540,13 +509,11 @@
         // Mobile menu
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenu = document.querySelector('.mobile-menu');
-
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
-
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenuBtn.classList.remove('active');
@@ -575,3 +542,12 @@
         });
 
         // Parallax (desktop only)
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const heroText = document.querySelector('.hero-bg-text');
+                if (heroText) heroText.style.transform = `translate(-50%, -50%) translateY(${window.pageYOffset * 0.2}px)`;
+            });
+        }
+    </script>
+</body>
+</html>
